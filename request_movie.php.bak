@@ -1,0 +1,33 @@
+<?php
+
+    
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, 'http://it.cmtc.ac.th/web_service/test6_teq/test6.json'.$id .'.json');
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
+    
+
+    $exec = curl_exec($curl);
+    curl_close($curl);
+
+	//print_r(json_decode ($exec));
+	$data = json_decode($exec);
+
+	foreach ($data as $key => $value)
+	{
+		echo 'Id: '. $value->Id;
+		echo '<br>';
+		echo 'IMDB: '. $value->ImdbId;
+		echo '<br>';
+		echo 'OriginalTitle: '. $value->OriginalTitle;
+		echo '<hr>';
+		echo 'TITLE: '. $value->Title;
+		echo '<br>';
+		echo 'Description: '. $value->Description;
+		echo '<br>';
+		echo 'TrailerLink: '. $value->TrailerLink;
+		echo '<hr>';
+	}
+
+    //var_dump(json_decode($exec));
+?>
